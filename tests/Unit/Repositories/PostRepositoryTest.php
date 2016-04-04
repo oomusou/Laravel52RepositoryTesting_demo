@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\Repositories\PostRepository;
 use Illuminate\Support\Collection;
 
 class PostRepositoryTest extends TestCase
