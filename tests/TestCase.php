@@ -1,7 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    protected function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+    }
+
     /**
      * The base URL to use while testing the application.
      *

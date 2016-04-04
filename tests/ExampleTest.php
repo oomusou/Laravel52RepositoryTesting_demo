@@ -5,13 +5,6 @@ use Illuminate\Support\Facades\Artisan;
 
 class ExampleTest extends TestCase
 {
-    protected function setUp()
-    {
-        parent::setUp();
-        Artisan::call('migrate');
-    }
-
-
     /**
      * A basic functional test example.
      *
