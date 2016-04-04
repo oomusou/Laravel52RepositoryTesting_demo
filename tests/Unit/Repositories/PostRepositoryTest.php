@@ -1,18 +1,28 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Post;
+use Illuminate\Support\Collection;
 
 class PostRepositoryTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     * @test
      */
-    public function testExample()
+    public function 最新3筆文章()
     {
-        $this->assertTrue(true);
+        /** arrange */
+        factory(Post::class, 100)->create();
+        $target = App::make(PostRepository::class);
+        $expected = new Collection([
+            100,
+            99,
+            98,
+        ]);
+
+        /** act */
+        $actual = $target->getLatest3Posts()->pluck('id');
+
+        /** assert */
+        $this->assertEquals($expected, $actual);
     }
 }
